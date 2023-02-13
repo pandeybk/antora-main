@@ -7,6 +7,7 @@ on:
 
 env:
   ANTORA_SITE: antora-playbook.yml
+  PUBLISH_KEY: ${{ secrets.ANTORA_SSH_KEY }}
 
 jobs:
   build:
@@ -24,7 +25,7 @@ jobs:
         args: generate ${{ env.ANTORA_SITE }}
 
     - name: Deploy to GitHub Pages
-      uses: pandeybk/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v3
       env:
         PUBLISH_DIR: public
         PUBLISH_BRANCH: gh-pages
