@@ -1,0 +1,32 @@
+name: Generate Antora Site
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  ANTORA_SITE: antora-playbook.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Generate site using Antora
+      uses: docker://antora/antora:3.1.2
+      env:
+        ANTORA_SITE: ${{ env.ANTORA_SITE }}
+      with:
+        args: generate ${{ env.ANTORA_SITE }}
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      env:
+        PUBLISH_DIR: public
+        PUBLISH_BRANCH: gh-pages
+        COMMIT_AUTHOR_NAME: "GitHub Actions"
+        COMMIT_AUTHOR_EMAIL: "actions@github.com"
