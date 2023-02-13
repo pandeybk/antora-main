@@ -24,7 +24,7 @@ jobs:
         args: generate ${{ env.ANTORA_SITE }}
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: pandeybk/actions-gh-pages@v3
       env:
         PUBLISH_DIR: public
         PUBLISH_BRANCH: gh-pages
