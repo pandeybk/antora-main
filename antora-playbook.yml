@@ -1,6 +1,6 @@
 site:
   title: TME Tigers POC
-  url: https://tme-tigers.github.io/demo/docs-site
+  # url: https://tme-tigers.github.io/demo/docs-site
   start_page: index.adoc
 content:
   sources:
@@ -8,7 +8,7 @@ content:
     branches: HEAD
     edit_url: false
   - url: https://github.com/pandeybk/antora-project-b.git
-    branches: [main, v2.0, v1.0]
+    branches: [main]
     start_path: docs
 asciidoc:
   attributes:
