@@ -21,13 +21,13 @@ jobs:
       env:
         ANTORA_SITE: ${{ env.ANTORA_SITE }}
       with:
-        args: generate ${{ env.ANTORA_SITE }}
+        args: ${{ env.ANTORA_SITE }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         deploy_key: ${{ secrets.ANTORA_SSH_KEY }}
-        publish_dir: ./public
+        publish_dir: ./app/build/site
       env:
         PUBLISH_BRANCH: gh-pages
         COMMIT_AUTHOR_NAME: "GitHub Actions"
